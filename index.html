@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel count Project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="vowel.css">
+</head>
+<body>
+    <div class="box">
+        <h2>Vowel Counter</h2>
+        <textarea name="" id="textArea" onkeyup="countVowel(this.value);"></textarea>
+        <p>
+            Vowel <span id="vowelCount">0</span>
+        </p>
+        <button id="btn">Clear</button>
+    </div>
+    <script>
+        var vowelCount = document.getElementById('vowelCount');
+        let btn = document.querySelector('button');
+        let textArea = document.getElementById('#textArea');
+        function countVowel(str){
+            str = str.toLowerCase();
+            let vowArr = ['a', 'e','i','o','u'],
+            Counter = 0;
+            for (let letter of str){
+                if(vowArr.includes(letter)){
+                    Counter++;
+                    vowelCount.classList.add('blink');
+                }
+                else{
+                    vowelCount.classList.remove('blink');
+                }
+            }
+            vowelCount.innerHTML = Counter;
+        }
+        // this is for clear textArea
+        $('#btn').click(function(){
+            $('#textArea').val('');
+
+            if(textArea==''){
+                vowelCount ='';
+            }
+        });
+    </script>
+</body>
+</html>
